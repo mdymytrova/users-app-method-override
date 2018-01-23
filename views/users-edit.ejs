@@ -1,0 +1,13 @@
+<% include partials/header %>
+
+<h1>Edit <%= user.firstName %> <%= user.lastName %></h1>
+
+<form action="/users/<%= user.id %>?_method=PUT" method="post" class="form">
+  <input type="text" name="firstName" value="<%= user.firstName %>" class="input-text">
+  <input type="text" name="lastName" value="<%= user.lastName %>" class="input-text">
+  <input type="email" name="email" value="<%= user.email %>" class="input-text">
+  <input type="text" name="age" value="<%= user.age %>" class="input-text">
+  <button type="submit" class="button button-submit">Update</button>
+</form>
+
+<% include partials/footer  %>

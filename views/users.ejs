@@ -1,0 +1,40 @@
+<% include partials/header %>
+
+<h1>Users page</h1>
+
+<form action="/users" method="post" class="form">
+  <input type="text" name="firstName" placeholder="First Name" required class="input-text">
+  <input type="text" name="lastName" placeholder="Last Name" required class="input-text">
+  <input type="email" name="email" placeholder="Email" required class="input-text">
+  <input type="text" name="age" placeholder="Age" required class="input-text">
+  <button type="submit" class="button button-submit">Add User</button>
+</form>
+
+
+<section class="userlist-container">
+  <% userlist.forEach((user) => {%>
+  <article class="user-info">
+    
+    <div class="user-contacts">
+      <h3><%= user.firstName %> <%= user.lastName %></h3>
+      <p><small>Age: <%= user.age %></small></p>
+      <p><a href="mailto:<%= user.email %>"><%= user.email %></a></p>
+    </div>
+    
+    <div class="buttons-container">
+      <form action="/users/<%= user.id %>/edit" method="GET">
+        <button type="submit" class="button button-edit">Edit</button>
+      </form>
+
+      <form action="/users/<%= user.id%>?_method=DELETE" method="post">
+        <button type="submit" class="button button-edit">Delete</button>
+      </form>
+    </div>
+  </article>
+  
+<% }) %>
+  
+</section>
+
+
+<% include partials/footer  %>
